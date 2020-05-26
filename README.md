@@ -1,2 +1,2 @@
 # Memory Game
-Stanford CS193p - Developing Apps for iOS
+Stanford CS193p 2020 - Developing Apps for iOS
