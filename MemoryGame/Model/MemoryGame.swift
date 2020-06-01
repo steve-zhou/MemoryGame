@@ -7,10 +7,15 @@
 //
 
 import Foundation
+import UIKit
 
 struct MemoryGame<CardContent: Equatable> {
     
     var cards: [Card]
+    
+    var name: String
+    
+    var color: UIColor
     
     var cardFlipedIndices: [Int] = []
     
@@ -26,7 +31,7 @@ struct MemoryGame<CardContent: Equatable> {
         }
     }
     
-    init(numberOfPairsOfCards: Int, cardContentFactory: (Int) -> CardContent) {
+    init(name: String, color: UIColor, numberOfPairsOfCards: Int, cardContentFactory: (Int) -> CardContent) {
         cards = [Card]()
         
         for pairIndex in 0..<numberOfPairsOfCards {
@@ -37,52 +42,10 @@ struct MemoryGame<CardContent: Equatable> {
         }
         cards.shuffle()
         removeLastTwoCards = cards.count
+        self.name = name
+        self.color = color
     }
- /*
-    mutating func choose(card: Card){
-       
-        if let chosenIndex = cards.firstIndex(matching: card){
-            print("I choosed index : \(chosenIndex) and another index: \(indexOfTheOneAndOnlyFaceUpCard)")
-            
-            if !cards[chosenIndex].isFaceUP{
-                print("Card is not face up: \(cards[chosenIndex].isFaceUP)")
-                
-                        if !cards[chosenIndex].isMatched {
-                            print("card is not matched up :\(cards[chosenIndex].isMatched)")
-                            
-                                    if let potentialMatchIndex = indexOfTheOneAndOnlyFaceUpCard {
-                                        print("The potenail match index: \(potentialMatchIndex)")
-                                                if cards[chosenIndex].content == cards[potentialMatchIndex].content {
-                                                    cards[chosenIndex].isMatched = true
-                                                    cards[potentialMatchIndex].isMatched = true
-                                                    print("There is a match!")
-                                                }
-                                                indexOfTheOneAndOnlyFaceUpCard = nil
-                                                print("There's no match and setting one and only to nil")
-
-                                    }else {
-                                                for index in cards.indices {
-                                                     cards[index].isFaceUP = false
-                                                    print("set \(index) card to face up to false ")
-                                                 }
-                                                 indexOfTheOneAndOnlyFaceUpCard = chosenIndex
-                                                 print("***********else One and Only : \(indexOfTheOneAndOnlyFaceUpCard)")
-                                   }
-                            
-                           self.cards[chosenIndex].isFaceUP = true
-                            print("Card is faced up: \(cards[chosenIndex].isFaceUP)")
-                            
-                      }else {
-                            print("The card you have choosed is matched")
-                       }
-                
-            }else {
-                print("The card you have choosed is already face up")
-            }
-        } // end of first IF statement
-    
-    }// end of function
-    */
+ 
   
     mutating func choose(card: Card){
     
@@ -96,16 +59,11 @@ struct MemoryGame<CardContent: Equatable> {
                     cards[chosenIndex].isMatched = true
                     cards[potentialMatchIndex].isMatched = true
                 }
-//                indexOfTheOneAndOnlyFaceUpCard = nil
+
                  self.cards[chosenIndex].isFaceUP = true
             }else {
-                
-//                for index in cards.indices {
-//                    cards[index].isFaceUP = false
-//                }
                 indexOfTheOneAndOnlyFaceUpCard = chosenIndex
             }
-//            self.cards[chosenIndex].isFaceUP = true
         }
         
         

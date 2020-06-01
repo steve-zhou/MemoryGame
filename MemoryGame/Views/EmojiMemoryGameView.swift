@@ -13,21 +13,38 @@ struct EmojiMemoryGameView: View {
    @ObservedObject var viewModel: EmojiMemoryGame
     
     var body: some View {
-        
-        Grid(viewModel.cards) { card in
+        VStack {
+            HStack {
+                Text("\(viewModel.themeName)").fontWeight(.medium).font(.title)
+            }.foregroundColor(Color(viewModel.color))
             
-            CardView(card: card).onTapGesture {
-                 self.viewModel.choose(card: card)
-            }.padding(5)
-        }
-//            ForEach(viewModel.cards) { card  in
-//                CardView(card: card).onTapGesture {
-//                    self.viewModel.choose(card: card)
-//                }
-//            }
-    
-        .padding()
-        .foregroundColor(Color.orange)
+            Grid(viewModel.cards) { card in
+                
+                CardView(card: card).onTapGesture {
+                     self.viewModel.choose(card: card)
+                }.padding(5)
+            }
+            
+            .foregroundColor(Color(viewModel.color))
+            
+            HStack {
+                Spacer()
+                
+                Button(action: {
+                    self.viewModel.model = EmojiMemoryGame().model
+                }) {
+                    Text("New Game").font(.title).fontWeight(.medium)
+                    
+                }.foregroundColor(Color(viewModel.color))
+                
+                Spacer()
+                
+                Text("Score: \(100)").font(.title)
+                Spacer()
+            }
+          
+         }
+        
     }
     
 }

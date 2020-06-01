@@ -8,13 +8,26 @@
 
 import SwiftUI
 
+
 class EmojiMemoryGame: ObservableObject {
     
-   @Published private var model: MemoryGame<String> = EmojiMemoryGame.createMemoryGame()
-    
+   @Published  var model: MemoryGame<String> = EmojiMemoryGame.createMemoryGame()
     
    
+  static private let themes = Themes.shared.generatingThemes()
     
+    
+    var color: UIColor {
+        model.color
+    }
+    
+    var themeName: String {
+        model.name
+    }
+    
+    var newGame: MemoryGame<String> {
+        model
+    }
     //MARK: - Access to the Model
     var cards: [MemoryGame<String>.Card] {
         return model.cards
@@ -28,19 +41,24 @@ class EmojiMemoryGame: ObservableObject {
     
     //MARK: - Build Memory Game
     static func createMemoryGame() -> MemoryGame<String> {
-        let emojis = generateRandomEmojiSet()
+        
+        let theme = themes.randomElement()!
+        let emojis = generateRandomEmojiSet(emoji: theme.emojisForTheme, pairOfCards: theme.numberOfShowingCards)
+
         print("Number of emojis: \(emojis.count)")
-        return MemoryGame(numberOfPairsOfCards: 5) { emojiIndex in
+        
+       return MemoryGame(name: theme.themeName, color: theme.themeColor, numberOfPairsOfCards: theme.numberOfShowingCards) { emojiIndex in
             return emojis[emojiIndex]
         }
+        
     }
     
     //MARK: - Random Emoji Set
-    static func generateRandomEmojiSet() -> [String] {
+    static func generateRandomEmojiSet(emoji range: [Int], pairOfCards: Int) -> [String] {
         var emojiSet = [String]()
-        let emojiRange = Array(0x1F300...0x1F3F0)
-        
-        for _ in 1...5{
+         let emojiRange = range
+    
+        for _ in 1...pairOfCards{
             guard let element = emojiRange.randomElement(),
                 let scalar = UnicodeScalar(element) else {
                     return []
