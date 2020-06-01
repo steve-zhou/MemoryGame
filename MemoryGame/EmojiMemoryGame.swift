@@ -30,7 +30,7 @@ class EmojiMemoryGame: ObservableObject {
     static func createMemoryGame() -> MemoryGame<String> {
         let emojis = generateRandomEmojiSet()
         print("Number of emojis: \(emojis.count)")
-       return MemoryGame(numberOfPairsOfCards: Int.random(in: 2...5)) { emojiIndex in
+        return MemoryGame(numberOfPairsOfCards: 5) { emojiIndex in
             return emojis[emojiIndex]
         }
     }
