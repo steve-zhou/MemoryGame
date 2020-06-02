@@ -31,15 +31,17 @@ struct EmojiMemoryGameView: View {
                 Spacer()
                 
                 Button(action: {
-                    self.viewModel.model = EmojiMemoryGame().model
+                    self.viewModel.newGame()
                 }) {
                     Text("New Game").font(.title).fontWeight(.medium)
                     
-                }.foregroundColor(Color(viewModel.color))
-                
+                    }
+                .foregroundColor(Color(viewModel.color))
+               // .background(LinearGradient(gradient: Gradient(colors: [.white, .red, .black]), startPoint: .leading, endPoint: .trailing))
+                .background(RadialGradient(gradient: Gradient(colors: [.white, .red, .black]), center: .center, startRadius: 50, endRadius: 200))
                 Spacer()
                 
-                Text("Score: \(100)").font(.title)
+                Text("Score: \(viewModel.score)").font(.title)
                 Spacer()
             }
           
@@ -55,7 +57,7 @@ struct CardView:View {
     //MARK: - Drawing Constants
     let cornerRadius: CGFloat = 10.0
     let edgeLineWidth: CGFloat = 3
-    
+   
     var body: some View{
         
         GeometryReader { geometry in
@@ -66,7 +68,7 @@ struct CardView:View {
     func body(size: CGSize) -> some View {
         ZStack {
            if self.card.isFaceUP {
-               RoundedRectangle(cornerRadius: cornerRadius).fill(Color.white)
+            RoundedRectangle(cornerRadius: cornerRadius).fill(Color.white)
                RoundedRectangle(cornerRadius: cornerRadius).stroke(lineWidth: edgeLineWidth)
                Text(self.card.content)
            }else{
