@@ -15,7 +15,8 @@ struct EmojiMemoryGameView: View {
     var body: some View {
         VStack {
             HStack {
-                Text("\(viewModel.themeName)").fontWeight(.medium).font(.title)
+                Text("\(viewModel.themeName)")
+                    .font(.system(size: 30, weight: .medium, design: .serif))
             }.foregroundColor(Color(viewModel.color))
             
             Grid(viewModel.cards) { card in
@@ -34,14 +35,18 @@ struct EmojiMemoryGameView: View {
                     self.viewModel.newGame()
                 }) {
                     Text("New Game").font(.title).fontWeight(.medium)
-                    
-                    }
-                .foregroundColor(Color(viewModel.color))
-               // .background(LinearGradient(gradient: Gradient(colors: [.white, .red, .black]), startPoint: .leading, endPoint: .trailing))
-                .background(RadialGradient(gradient: Gradient(colors: [.white, .red, .black]), center: .center, startRadius: 50, endRadius: 200))
+                }
+                .foregroundColor(Color.white)
+                .padding()
+                .background(LinearGradient(gradient: Gradient(colors: [Color(viewModel.color), Color.gray]), startPoint: .leading, endPoint: .trailing))
+                .cornerRadius(15.0)
+                .scaleEffect(0.75)
                 Spacer()
                 
-                Text("Score: \(viewModel.score)").font(.title)
+                Text("Score: \(viewModel.score)")
+                    .font(.system(size: 25, weight: .medium, design: .serif))
+                    .italic()
+                
                 Spacer()
             }
           
