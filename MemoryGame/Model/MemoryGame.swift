@@ -11,17 +11,13 @@ import UIKit
 
 struct MemoryGame<CardContent: Equatable> {
     
-    var cards: [Card]
+   private (set) var cards: [Card]
     
     var theme: Theme
-//
-//    var cardFlipedIndices: [Int] = []
-//
-//    var removeLastTwoCards = 0
     
     var score: Int
     
-    var indexOfTheOneAndOnlyFaceUpCard: Int?{
+   private var indexOfTheOneAndOnlyFaceUpCard: Int?{
         get{ cards.indices.filter({cards[$0].isFaceUP }).only }
         
         set{
@@ -41,7 +37,6 @@ struct MemoryGame<CardContent: Equatable> {
             cards.append(Card(id: pairIndex * 2 + 1, content: content))
         }
         cards.shuffle()
-       // removeLastTwoCards = cards.count
         self.theme = theme
         score = 0
     }
@@ -83,43 +78,6 @@ struct MemoryGame<CardContent: Equatable> {
         
     }
     
-  /*
-  mutating func choose(card: Card){
-  
-        if let chosenIndex: Int = cards.firstIndex(matching: card) {
-          
-          if !cards[chosenIndex].isFaceUP{
-     
-                    if cardFlipedIndices.count == 2 {
-                       
-                        if cards[cardFlipedIndices.first!].content == cards[cardFlipedIndices.last!].content {
-                             removeLastTwoCards -= 2
-                            settingMatchedCardAndFaceup()
-                            flipAddTheCard(using: chosenIndex)
-
-                        }else {
-                            cards[cardFlipedIndices.first!].isFaceUP = false
-                            cards[cardFlipedIndices.last!].isFaceUP = false
-                            flipAddTheCard(using: chosenIndex)
-
-                        }
-                    }else {
-                        cardFlipedIndices.append(chosenIndex)
-                        self.cards[chosenIndex].isFaceUP = true
-                    }
-          
-            }else {
-                  print("The card you have choosed is already face up")
-                    if removeLastTwoCards == 2 {
-                        settingMatchedCardAndFaceup()
-                    }
-            
-                }
-        }
-
-   }
-   */
-    
     struct Card: Identifiable  {
         var id: Int
         var isFaceUP: Bool = false
@@ -127,18 +85,4 @@ struct MemoryGame<CardContent: Equatable> {
         var content: CardContent
         var isSeen: Bool = false
     }
-    
-//
-//   mutating private func flipAddTheCard(using index: Int){
-//        cardFlipedIndices = []
-//        self.cards[index].isFaceUP = true
-//        cardFlipedIndices.append(index)
-//    }
-//   mutating private func settingMatchedCardAndFaceup() {
-//        cards[cardFlipedIndices.first!].isMatched = true
-//        cards[cardFlipedIndices.last!].isMatched = true
-//        cards[cardFlipedIndices.first!].isFaceUP = false
-//        cards[cardFlipedIndices.last!].isFaceUP = false
-//    }
-    
 }

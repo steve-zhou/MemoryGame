@@ -40,7 +40,7 @@ class EmojiMemoryGame: ObservableObject {
     }
     
     //MARK: - Build Memory Game
-    static func createMemoryGame() -> MemoryGame<String> {
+   private static func createMemoryGame() -> MemoryGame<String> {
         
         let theme = themes.randomElement()!
         let emojis = generateRandomEmojiSet(emoji: theme.emojisForTheme, pairOfCards: theme.numberOfShowingCards)
@@ -64,7 +64,6 @@ class EmojiMemoryGame: ObservableObject {
         }
         return emojiSet
     }
-    
     
     func newGame(){
         model = EmojiMemoryGame.createMemoryGame()
