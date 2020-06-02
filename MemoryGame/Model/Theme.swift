@@ -10,18 +10,20 @@
 import UIKit
 
 
-struct Theme {
+struct Theme: Identifiable {
     
+    let id: Int
     let themeName: String
     let emojisForTheme: [Int]
     let numberOfShowingCards: Int
     let themeColor: UIColor
     
-    init(name: String, emojiSet: [Int], showingCards: Int = 1, color: UIColor) {
+    init(name: String, emojiSet: [Int], showingCards: Int = 1, color: UIColor, id: Int) {
          themeName = name
         emojisForTheme = emojiSet
         numberOfShowingCards = showingCards
         themeColor = color
+        self.id = id 
     }
     
 }

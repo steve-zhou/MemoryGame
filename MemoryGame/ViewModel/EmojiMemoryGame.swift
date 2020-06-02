@@ -14,8 +14,9 @@ class EmojiMemoryGame: ObservableObject {
    @Published private var model: MemoryGame<String> = EmojiMemoryGame.createMemoryGame()
     
    
-    static private let themes = Themes.shared.generatingThemes()
+    static private var themes = Themes.shared.generatingThemes()
     
+    var newTheme: Theme?
     
     var color: UIColor {
         model.theme.themeColor
@@ -33,6 +34,11 @@ class EmojiMemoryGame: ObservableObject {
         return model.cards
     }
     
+    
+    init(theme: Theme) {
+      model = EmojiMemoryGame.createMemoryGame(theme)
+    }
+    
     //MARK: - Intent(s)
     func choose(card: MemoryGame<String>.Card){
      
@@ -40,14 +46,13 @@ class EmojiMemoryGame: ObservableObject {
     }
     
     //MARK: - Build Memory Game
-   private static func createMemoryGame() -> MemoryGame<String> {
+    private static func createMemoryGame(_ theme: Theme = themes.randomElement()!) -> MemoryGame<String> {
         
-        let theme = themes.randomElement()!
         let emojis = generateRandomEmojiSet(emoji: theme.emojisForTheme, pairOfCards: theme.numberOfShowingCards)
-       return MemoryGame(theme: theme, numberOfPairsOfCards: theme.numberOfShowingCards) { emojiIndex in
-            return emojis[emojiIndex]
-        }
         
+         return MemoryGame(theme: theme, numberOfPairsOfCards: theme.numberOfShowingCards) { emojiIndex in
+             return emojis[emojiIndex]
+         }
     }
     
     //MARK: - Random Emoji Set
@@ -66,6 +71,7 @@ class EmojiMemoryGame: ObservableObject {
     }
     
     func newGame(){
+        
         model = EmojiMemoryGame.createMemoryGame()
     }
 }

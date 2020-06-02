@@ -31,7 +31,7 @@ struct CardView:View {
                Text(self.card.content)
            }else{
             if !card.isMatched {
-                 RoundedRectangle(cornerRadius: cornerRadius).fill()
+                RoundedRectangle(cornerRadius: cornerRadius)
                }
            }
         }

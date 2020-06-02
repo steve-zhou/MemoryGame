@@ -20,6 +20,8 @@
 		3DC885F024855D0600FBC291 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC885EF24855D0600FBC291 /* Theme.swift */; };
 		3DC885F22485636800FBC291 /* Themes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC885F12485636800FBC291 /* Themes.swift */; };
 		3DEBEFB22486BA8600798A0D /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEBEFB12486BA8600798A0D /* CardView.swift */; };
+		3DEBEFB42486D22400798A0D /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEBEFB32486D22400798A0D /* MainView.swift */; };
+		3DEBEFB62486D33200798A0D /* ThemeRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEBEFB52486D33200798A0D /* ThemeRow.swift */; };
 		3DF4560D247F10A7007AB54A /* GridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF4560C247F10A7007AB54A /* GridLayout.swift */; };
 		3DF4560F247F1178007AB54A /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF4560E247F1178007AB54A /* Grid.swift */; };
 /* End PBXBuildFile section */
@@ -40,6 +42,8 @@
 		3DC885EF24855D0600FBC291 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		3DC885F12485636800FBC291 /* Themes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Themes.swift; sourceTree = "<group>"; };
 		3DEBEFB12486BA8600798A0D /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		3DEBEFB32486D22400798A0D /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		3DEBEFB52486D33200798A0D /* ThemeRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeRow.swift; sourceTree = "<group>"; };
 		3DF4560C247F10A7007AB54A /* GridLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridLayout.swift; sourceTree = "<group>"; };
 		3DF4560E247F1178007AB54A /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -110,7 +114,6 @@
 			isa = PBXGroup;
 			children = (
 				3DF4560C247F10A7007AB54A /* GridLayout.swift */,
-				3DF4560E247F1178007AB54A /* Grid.swift */,
 			);
 			path = layouts;
 			sourceTree = "<group>";
@@ -120,6 +123,7 @@
 			children = (
 				3D95DFEE2475AD990060CE83 /* MemoryGame.swift */,
 				3DC885EF24855D0600FBC291 /* Theme.swift */,
+				3DC885F12485636800FBC291 /* Themes.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -127,8 +131,9 @@
 		3DC885F624856C4800FBC291 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				3DEBEFB32486D22400798A0D /* MainView.swift */,
 				3D95DFF02475AF5C0060CE83 /* EmojiMemoryGame.swift */,
-				3DC885F12485636800FBC291 /* Themes.swift */,
+				3DEBEFB52486D33200798A0D /* ThemeRow.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -138,6 +143,7 @@
 			children = (
 				3D95DFDE2475AB850060CE83 /* EmojiMemoryGameView.swift */,
 				3DEBEFB12486BA8600798A0D /* CardView.swift */,
+				3DF4560E247F1178007AB54A /* Grid.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -214,6 +220,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D95DFDB2475AB850060CE83 /* AppDelegate.swift in Sources */,
+				3DEBEFB42486D22400798A0D /* MainView.swift in Sources */,
 				3D95DFDD2475AB850060CE83 /* SceneDelegate.swift in Sources */,
 				3D95DFEF2475AD990060CE83 /* MemoryGame.swift in Sources */,
 				3DC885ED24854F4F00FBC291 /* Array+Only.swift in Sources */,
@@ -224,6 +231,7 @@
 				3DC885F024855D0600FBC291 /* Theme.swift in Sources */,
 				3DF4560F247F1178007AB54A /* Grid.swift in Sources */,
 				3DEBEFB22486BA8600798A0D /* CardView.swift in Sources */,
+				3DEBEFB62486D33200798A0D /* ThemeRow.swift in Sources */,
 				3D95DFF12475AF5C0060CE83 /* EmojiMemoryGame.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

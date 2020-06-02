@@ -52,14 +52,14 @@ struct EmojiMemoryGameView: View {
             }
           
          }
-        
+        .navigationBarTitle(Text(viewModel.themeName), displayMode: .inline)
     }
     
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        
-        EmojiMemoryGameView(viewModel: EmojiMemoryGame())
-    }
-}
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        
+//        EmojiMemoryGameView(viewModel: EmojiMemoryGame())
+//    }
+//}
