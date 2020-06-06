@@ -14,8 +14,8 @@ struct MainView: View {
         
         NavigationView{
             
-            List(Themes.shared.generatingThemes(), id: \.themeName) { theme in
-                
+            List(Themes.shared, id: \.themeName) { theme in
+          
                 NavigationLink(destination: EmojiMemoryGameView(viewModel: EmojiMemoryGame(theme: theme))) {
                     
                     ThemeRow(theme: theme)

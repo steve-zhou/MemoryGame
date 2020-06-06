@@ -13,13 +13,9 @@ struct EmojiMemoryGameView: View {
    @ObservedObject var viewModel: EmojiMemoryGame
     
     var body: some View {
+        
+        
         VStack {
-            HStack {
-                Text("\(viewModel.themeName)")
-                    .font(.system(size: 30, weight: .medium, design: .serif))
-                    .foregroundColor(Color(viewModel.color))
-            }
-            
             Grid(viewModel.cards) { card in
                 
                 CardView(card: card).onTapGesture {
@@ -44,9 +40,8 @@ struct EmojiMemoryGameView: View {
                 .scaleEffect(0.75)
                 Spacer()
                 
-                Text("Score: \(viewModel.score)")
-                    .font(.system(size: 25, weight: .medium, design: .serif))
-                    .italic()
+                Text("Score: \(viewModel.score)").font(.system(size: 25, weight: .medium, design: .serif))
+                   
                 
                 Spacer()
             }
@@ -60,6 +55,6 @@ struct EmojiMemoryGameView: View {
 //struct ContentView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        
-//        EmojiMemoryGameView(viewModel: EmojiMemoryGame())
+//        EmojiMemoryGameView(viewModel: EmojiMemoryGame(theme: Theme(name: "Creatures", emojiSet: Array(0x1F985...0x1F991), showingCards: Int.random(in: 5...10), color: UIColor.systemPink, id: 8)))
 //    }
 //}

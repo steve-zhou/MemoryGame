@@ -86,3 +86,4 @@ struct MemoryGame<CardContent: Equatable> {
         var isSeen: Bool = false
     }
 }
+

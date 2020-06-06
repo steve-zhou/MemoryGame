@@ -14,7 +14,7 @@ class EmojiMemoryGame: ObservableObject {
    @Published private var model: MemoryGame<String> = EmojiMemoryGame.createMemoryGame()
     
    
-    static private var themes = Themes.shared.generatingThemes()
+    static private var themes = Themes.shared
     
     var newTheme: Theme?
     
@@ -36,6 +36,9 @@ class EmojiMemoryGame: ObservableObject {
     
     
     init(theme: Theme) {
+        
+        print("The Theme name: \(theme.themeName)")
+        
       model = EmojiMemoryGame.createMemoryGame(theme)
     }
     
@@ -47,28 +50,29 @@ class EmojiMemoryGame: ObservableObject {
     
     //MARK: - Build Memory Game
     private static func createMemoryGame(_ theme: Theme = themes.randomElement()!) -> MemoryGame<String> {
-        
-        let emojis = generateRandomEmojiSet(emoji: theme.emojisForTheme, pairOfCards: theme.numberOfShowingCards)
-        
+                
          return MemoryGame(theme: theme, numberOfPairsOfCards: theme.numberOfShowingCards) { emojiIndex in
-             return emojis[emojiIndex]
+             return theme.emojisForTheme[emojiIndex]
          }
     }
     
     //MARK: - Random Emoji Set
-    static func generateRandomEmojiSet(emoji range: [Int], pairOfCards: Int) -> [String] {
-        var emojiSet = [String]()
-         let emojiRange = range
-    
-        for _ in 1...pairOfCards{
-            guard let element = emojiRange.randomElement(),
-                let scalar = UnicodeScalar(element) else {
-                    return []
-            }
-            emojiSet.append(String(scalar))
-        }
-        return emojiSet
-    }
+//    static func generateRandomEmojiSet(emoji range: [Int], pairOfCards: Int) -> [String] {
+//
+//        var emojiSet = [String]()
+//
+//         let emojiRange = range
+//
+//        for _ in 1...pairOfCards{
+//
+//            guard let element = emojiRange.randomElement(), let scalar = UnicodeScalar(element) else {
+//                    return []
+//            }
+//
+//            emojiSet.append(String(scalar))
+//        }
+//        return emojiSet
+//    }
     
     func newGame(){
         
