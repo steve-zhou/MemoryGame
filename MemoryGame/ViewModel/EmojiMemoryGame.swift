@@ -16,7 +16,7 @@ class EmojiMemoryGame: ObservableObject {
    
     static private var themes = Themes.shared
     
-    var newTheme: Theme?
+    private var newTheme: Theme?
     
     var color: UIColor {
         model.theme.themeColor
@@ -36,9 +36,7 @@ class EmojiMemoryGame: ObservableObject {
     
     
     init(theme: Theme) {
-        
-        print("The Theme name: \(theme.themeName)")
-        
+      newTheme = theme
       model = EmojiMemoryGame.createMemoryGame(theme)
     }
     
@@ -51,7 +49,7 @@ class EmojiMemoryGame: ObservableObject {
     //MARK: - Build Memory Game
     private static func createMemoryGame(_ theme: Theme = themes.randomElement()!) -> MemoryGame<String> {
                 
-         return MemoryGame(theme: theme, numberOfPairsOfCards: theme.numberOfShowingCards) { emojiIndex in
+        return MemoryGame(theme: theme, numberOfPairsOfCards: theme.emojisForTheme.count) { emojiIndex in
              return theme.emojisForTheme[emojiIndex]
          }
     }
@@ -76,6 +74,6 @@ class EmojiMemoryGame: ObservableObject {
     
     func newGame(){
         
-        model = EmojiMemoryGame.createMemoryGame()
+        model = EmojiMemoryGame.createMemoryGame(newTheme!)
     }
 }
